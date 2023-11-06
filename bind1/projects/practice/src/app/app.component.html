@@ -1,0 +1,67 @@
+<h1>Hello {{name}} </h1>
+
+<button [disabled] = "isdisabled" >Property Binding</button> <br><br>
+
+<input type="text" [value]="val" [disabled]="isdisabled">
+
+<h2>BUILT-IN DIRECTIVES </h2>
+<h3> From here Data Binding Directive(ngModel,ngClass,ngStyle)</h3>
+<p [class.danger]="isdanger" [class.center]="iscenter">It is a Class Binding</p>
+
+<p [ngClass]="{'center':iscenter, 'NotDanger':isNotdanger}">Its is a  'ngClass' used for multipleClasses</p>
+<p [ngClass]="fun()">"we are used functions for multipleClasses(ngClasses)."</p>
+
+<p [ngStyle]="{'color':color, 'backgroundColor' : bgclr }"> This is style binding it is like a (key:value) reference</p><br>
+
+<button [disabled] = "isdisabled" (click)="result($event)">Event-Binding click </button>
+ <p>--->(click) means Information passing to template to component</p>
+
+ <input type="text" placeholder="Enter Type" [(ngModel)] ='value1'><br>
+ which type: {{value1}}
+
+
+ <p> suppose we want no.of times of things</p>
+
+<div #Moretimes><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Nemo minus cum perferendis veritatis, eos, voluptate eligendi iusto magnam, 
+    nesciunt temporibus ex laudantium. 
+    Exercitationem beatae asperiores nulla aliquid commodi amet distinctio.</p></div>
+
+    {{Moretimes}} <br><br>
+
+    {{Moretimes.textContent}}
+
+
+<p> Here is an example for #ex <input type="text" placeholder="Enter Type" [(ngModel)] ='value1' #text></p>
+{{text.placeholder}}<br>
+{{text.value}}
+
+<h3> From here Structural Directive(ngIf,ngFor,ngSwitch)</h3>
+
+<div *ngIf = "(name2==='structural-directive Binding')?true:false">
+    <p>These are structural-directive Bindings</p>
+</div>
+
+
+<div *ngIf="isAdmin">
+    <div *ngIf = "isGuest">
+        <p>Hello Guest</p>
+     </div>
+     <P>Hello Admin</P>
+</div>
+
+
+<div *ngIf="isAdmin">
+    <div *ngIf = "isGuest then gst else Adm">
+    </div>
+
+    <ng-template #gst>Hello Guest</ng-template>
+
+    <ng-template #Adm>Hello Admin</ng-template>
+    
+</div>
+
+
+
+
+

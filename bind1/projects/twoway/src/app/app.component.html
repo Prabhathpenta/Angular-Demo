@@ -1,0 +1,21 @@
+<p>Twoway data binding</p>
+<input type="text" [(ngModel)] = "val"/><br>
+<input type ="email" [(ngModel)] = "em"/><br>
+<input type="password" [(ngModel)] = "ps"/>
+
+<!--<select name="" id="" [(ngModel)]="op">
+
+<option value="">DELHI</option>
+<option value="">Hyd</option>
+<option value="">chennai</option>
+</select> -->
+
+<div #name1  class="light">
+    <p>hello babe.... </p>
+</div>
+
+<p>{{val}}</p>
+<p>User Email is : {{em}}</p>
+<p>password : {{ps}} </p>
+ 
+{{name1.textContent}}
