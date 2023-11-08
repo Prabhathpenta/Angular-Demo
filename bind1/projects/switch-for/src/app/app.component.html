@@ -1,0 +1,32 @@
+<!-- <h1>Switch case Demo</h1>
+<div [ngSwitch]="value">
+
+    <button (click)="incr()">Click</button>
+
+    <div *ngSwitchCase="1">
+        Sunday
+        </div>
+
+        <div *ngSwitchCase="2">
+            Monday
+        </div>
+
+        <div *ngSwitchCase="3">
+            Tuesday
+        </div>
+
+        <div *ngSwitchDefault="0">
+            Saturday
+        </div>
+    
+</div> -->
+
+<div>
+<div *ngFor="let n of data ; index as i;even as e"> 
+{{n}} and {{i}}
+{{e}} <br>
+
+<div *ngIf="e">
+    {{e}}
+    </div>
+</div>
