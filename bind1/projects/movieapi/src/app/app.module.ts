@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MyComponent } from './my-components/my-component';
-import { HeaderComponent } from './header/header.component';
+import { TagPipe } from './tag.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyComponent,
-    HeaderComponent
-  
-
+    TagPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

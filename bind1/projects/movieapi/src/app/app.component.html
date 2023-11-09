@@ -1,0 +1,10 @@
+<h1>Movie app</h1>
+<input type="text" [(ngModel)]="val">
+
+<button (click)="clickSearch()">search</button>
+
+<div class="moviedata">
+    <div *ngFor="let m of movies">
+    {{m|tag}}
+    </div>
+</div>
