@@ -8,7 +8,7 @@ export class TagPipe implements PipeTransform {
   transform(value: Object, ...args: unknown[]): unknown {
    let data = JSON.stringify(value)
    return data;
-    //return JSON.parse(data);
+  return JSON.parse(data);
   }
 
 }

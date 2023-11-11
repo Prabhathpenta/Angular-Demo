@@ -1,0 +1,22 @@
+<!-- 
+    @Input
+    <app-child [msg]="msg"></app-child>
+<app-child [msg2]="msg2"></app-child>
+<app-child [msg3]="msg3"></app-child> 
+<app-child [names]="names[0]"></app-child>
+<app-child [names]="names[1 ]"></app-child>-->
+
+<!-- @output-
+    
+
+<app-child (eve) ="fun($event)"></app-child>
+{{msg1}} -->
+
+<!-- @ViewChild
+    <div #pr><h1>ViewChild </h1></div>
+    <button (click)="ChangeBg()">Change</button> -->
+
+    <!-- Template Ref variables -->
+    <app-child #child></app-child>
+   {{child.message1}}
+   <button (click)="child.greet()">Click</button>

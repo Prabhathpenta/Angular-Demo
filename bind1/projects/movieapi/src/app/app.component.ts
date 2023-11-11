@@ -1,25 +1,52 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit   {
   title = 'Movieapi';
-  val:string='';
-  url:string="https://omdbapi.com/?s=%22baahubali%22&apikey=2210adfb"
-  movies = [];
+  searchQuery : string='';
+  movies: any[] = [];
+  
+   
+  //url:string=`https://www.omdbapi.com/?s=${this.searchQuery}&apikey=${this.apikey}`;
+ 
+  //val:string='';
+  
+ 
+  
+ 
+  
+ 
+  async fetchMovies() {
 
-  async getMovieData(value:string) {
-    const movieResponse = await fetch(this.url)
-    const data =await movieResponse.json();
-    console.log(data);
-    this.movies=data.Search;
-    console.log(this.movies);
+    try {
 
+      const apikey = '1870b88e'; 
+      const response = await fetch(`https://www.omdbapi.com/?s=${this.searchQuery}&apikey=${apikey}`);
+      if (response.ok) {
+        const data = await response.json();
+        this.movies=data.Search;
+      
+    } else {
+      console.error('Error fetching data');
+    }
+  } catch (error) {
+    console.error(error);
+  } 
+}
+
+ 
+
+  ngOnInit() {
+    this.fetchMovies();
   }
-  clickSearch() {
-    this.getMovieData(this.val);
+  
+  onSearchInput() {
+    this.fetchMovies();
   }
 }
+
+

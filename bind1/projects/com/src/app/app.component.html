@@ -1,0 +1,19 @@
+
+<!-- 
+  <h1>This is parent Component</h1>
+  <app-main msg="{{message}}"></app-main>
+<app-main msg="{{para}}"></app-main>
+<app-main msg="buddy"></app-main>
+<app-main msg="bye"></app-main> 
+
+<app-main m="{{message}}"></app-main> -->
+
+
+<div *ngFor="let fr of fruits">
+  <app-main fruits="{{fr.fruit}}" image="{{fr.img}}"></app-main>
+</div>
+
+<app-main Hello {{msg}}></app-main>
+
+
+
