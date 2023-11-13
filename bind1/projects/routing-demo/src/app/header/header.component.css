@@ -1,0 +1,5 @@
+header {
+    display: flex; gap: 20px; background: lightgrey ;
+    text-decoration: none;
+    /* //justify-content: end; */
+}

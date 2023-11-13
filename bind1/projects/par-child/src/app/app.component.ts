@@ -8,6 +8,7 @@ import { ChildComponent } from './child/child.component';
 })
 export class AppComponent {
   title = 'Par-Child';
+  //@Input
   // msg ="Namasthe";
   // msg2="ntng";
   // msg3= 'aadab';
