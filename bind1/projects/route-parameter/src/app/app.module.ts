@@ -7,8 +7,8 @@ import { RouterModule,Routes } from '@angular/router';
 import { UsersComponent } from './users/users.component';
 
 const routes:Routes = [
-  {path : '', component:AppComponent},
-  {path:'users',component:AppComponent},
+  {path : '', component:UsersComponent},
+  {path:'users',component:UsersComponent},
   {path:'users/:id', component:UsersComponent}
 ]
 

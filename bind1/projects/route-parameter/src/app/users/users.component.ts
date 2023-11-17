@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -11,7 +12,7 @@ export class UsersComponent {
   constructor (private r: ActivatedRoute){
     this.r.params.subscribe((para) => {
       //console.log(para['id'])  
-      this.userId = +para['id'];
+      this.userId = +para['id']; 
     })
   }
   

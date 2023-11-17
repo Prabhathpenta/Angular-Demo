@@ -4,9 +4,10 @@
  <div>
   <ul>
     <li *ngFor="let u of users" (click)="call(u.id)" style="list-style-type: none;"> 
-    <div>{{u.name}}-{{u.age}}</div>
+    <div>
+      <a routerLink="./users" routerLinkActive="true">{{u.name}}-{{u.age}}</a></div>
     </li>
   </ul>
 </div>
-<app-users></app-users>
+
 <router-outlet></router-outlet>
