@@ -13,8 +13,11 @@ import { DataArrayService } from './data-array.service';
 
 const routes:Routes =[
   {path : '', component: HomeComponent},
+  {path : 'Homme', component: HomeComponent},
   {path : 'about', component: AboutComponent},
   {path : 'contact', component: ContactComponent},
+  //{path : '**', component:AboutComponent},
+  // {path : '**', redirectTo:'/home',pathMatch:'full'},
 ]
 
 @NgModule({
