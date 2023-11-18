@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snake Game</title>
+    <style>
+        #game-board {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>Snake Game</h1>
+    <div id="game-board"></div>
+    <script>
+        const gameBoard = document.getElementById('game-board');
+        const gridSize = 10; // Size of each grid cell in pixels
+        const initialSnakeLength = 5;
+        const snakeColor = 'green';
+        const foodColor = 'red';
+
+        const snake = [
+            { x: 5, y: 5 },
+            { x: 4, y: 5 },
+            { x: 3, y: 5 },
+        ];
+
+        let direction = 'right';
+        let food = generateFood();
+
+        function generateFood() {
+            const x = Math.floor(Math.random() * (gameBoard.clientWidth / gridSize));
+            const y = Math.floor(Math.random() * (gameBoard.clientHeight / gridSize));
+            return { x, y };
+        }
+
+        function drawSnake() {
+            for (const segment of snake) {
+                const snakeSegment = document.createElement('div');
+                snakeSegment.style.width = gridSize + 'px';
+                snakeSegment.style.height = gridSize + 'px';
+                snakeSegment.style.position = 'absolute';
+                snakeSegment.style.backgroundColor = snakeColor;
+                snakeSegment.style.left = segment.x * gridSize + 'px';
+                snakeSegment.style.top = segment.y * gridSize + 'px';
+                gameBoard.appendChild(snakeSegment);
+            }
+        }
+
+        function drawFood() {
+            const foodDiv = document.createElement('div');
+            foodDiv.style.width = gridSize + 'px';
+            foodDiv.style.height = gridSize + 'px';
+            foodDiv.style.position = 'absolute';
+            foodDiv.style.backgroundColor = foodColor;
+            foodDiv.style.left = food.x * gridSize + 'px';
+            foodDiv.style.top = food.y * gridSize + 'px';
+            gameBoard.appendChild(foodDiv);
+        }
+
+        function updateGame() {
+            const head = { ...snake[0] };
+
+            switch (direction) {
+                case 'up':
+                    head.y -= 1;
+                    break;
+                case 'down':
+                    head.y += 1;
+                    break;
+                case 'left':
+                    head.x -= 1;
+                    break;
+                case 'right':
+                    head.x += 1;
+                    break;
+            }
+
+            snake.unshift(head);
+
+            if (head.x === food.x && head.y === food.y) {
+                food = generateFood();
+            } else {
+                snake.pop();
+            }
+
+            // Check for collision with wall
+            if (
+                head.x < 0 ||
+                head.x * gridSize >= gameBoard.clientWidth ||
+                head.y < 0 ||
+                head.y * gridSize >= gameBoard.clientHeight
+            ) {
+                alert('Game Over');
+                window.location.reload();
+            }
+
+            // Check for self-collision
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    alert('Game Over');
+                    window.location.reload();
+                }
+            }
+
+            gameBoard.innerHTML = '';
+            drawFood();
+            drawSnake();
+        }
+
+        document.addEventListener('keydown', (event) => {
+            const key = event.key;
+            switch (key) {
+                case 'ArrowUp':
+                    if (direction !== 'down') {
+                        direction = 'up';
+                    }
+                    break;
+                case 'ArrowDown':
+                    if (direction !== 'up') {
+                        direction = 'down';
+                    }
+                    break;
+                case 'ArrowLeft':
+                    if (direction !== 'right') {
+                        direction = 'left';
+                    }
+                    break;
+                case 'ArrowRight':
+                    if (direction !== 'left') {
+                        direction = 'right';
+                    }
+                    break;
+            }
+        });
+
+        // Initialize the game
+        drawSnake();
+        drawFood();
+        setInterval(updateGame, 200);
+    </script>
+</body>
+</html>
