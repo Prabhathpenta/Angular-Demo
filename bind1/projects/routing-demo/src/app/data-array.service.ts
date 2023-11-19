@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,13 @@ export class DataArrayService {
     alert("Please give Contact details");
   }
 
-  
-  constructor() {}
+  value:any;
+  constructor(private ht: HttpClient) {
+    this.value=this.ht.get('https://jsonplaceholder.typicode.com/posts');
+    console.log(this.value);
+    this.value.subscribe((v:any)=>{
+      console.log(v)
+    }) 
+  }
 }
 
