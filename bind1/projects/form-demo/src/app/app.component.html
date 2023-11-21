@@ -1,0 +1,11 @@
+<h1>Form Demo</h1>
+<form>
+ <div ngModelGroup #mydiv="ngModelGroup">
+  Username:
+  <input type="text" ngModel #mybox="ngModel" name="Username" value="prabha" required> <br>
+  password:
+  <input type="password" ngModel #mypswd="ngModel" name="pswrd" minlength="4"><br> 
+
+ </div> 
+ <button (click)="display(mybox,mypswd)">click</button>
+</form>
