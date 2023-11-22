@@ -1482,6 +1482,7 @@
               "projects/form-demo/src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "projects/form-demo/src/styles.css"
             ],
             "scripts": []
@@ -1544,6 +1545,7 @@
               "projects/form-demo/src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "projects/form-demo/src/styles.css"
             ],
             "scripts": []
