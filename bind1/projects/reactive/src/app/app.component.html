@@ -1,0 +1,12 @@
+<h1>Reactive Forms</h1>
+<form [formGroup]="myForm" (ngSubmit)="submit()" >
+  Email:
+  <input type="text" formControlName="uname"><br>
+  <div class="errors" *ngIf="myForm.get('uname')?.touched&&myForm.get('uname')?.errors?.['required']">Email is required</div>
+  <div class="errors" *ngIf="myForm.get('uname')?.touched&&myForm.get('uname')?.errors?.['email']">Enetr valid email</div>
+  Password:
+  <input type ="password" formControlName="pswd"><br>
+  <div class="errors" *ngIf="myForm.get('pswd')?.touched&&myForm.get('pswd')?.errors?.['minlength']">minlength is 8 characters</div>
+  <button (click)="show()">click</button>
+  <button type="submit">Submit</button>
+</form>
