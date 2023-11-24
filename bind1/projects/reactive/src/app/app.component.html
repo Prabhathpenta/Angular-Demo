@@ -7,6 +7,17 @@
   Password:
   <input type ="password" formControlName="pswd"><br>
   <div class="errors" *ngIf="myForm.get('pswd')?.touched&&myForm.get('pswd')?.errors?.['minlength']">minlength is 8 characters</div>
+
+  Names:
+  <div formArrayName="names" >
+     <div *ngFor="let name of names.controls;index as i">
+   <input type="text">
+      <button (click)="delete(i)">🐠</button>
+  </div>
+  <button (click)="add()">add</button> <br>  
+     
+  </div>
+
   <button (click)="show()">click</button>
   <button type="submit">Submit</button>
-</form>
+    </form>r 
