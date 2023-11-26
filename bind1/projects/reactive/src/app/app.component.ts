@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators,FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, Validators,FormBuilder , ValidatorFn} from '@angular/forms';
 import { loginform } from './models/login.model';
 import { FormArray } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { FormArray } from '@angular/forms';
 })
 export class AppComponent {
   title = 'reactive';
-  constructor(private fb : FormBuilder) {
+  data$:any;
+  constructor(private fb : FormBuilder, private hc : HttpClient) {
   }
 
   //myForm = this.fb.group({
@@ -22,21 +24,41 @@ export class AppComponent {
   //   pswd: new FormControl("",[Validators.minLength(8)])
  // })
 
+ ngOnInit() {
+  this.getData();
+ }
+
+ getData() {
+ this.data$ = this.hc.get(`https://jsonplaceholder.typicode.com/todos`);
+ console.log(this.data$)
+ }
+
  myForm = this.fb.group({
-  uname:[null,[Validators.required, this.checkUpper()]],
+  uname:[null,[Validators.required, this.checkUpperCase], this.asyncValidateTest],
   password:[],
-          //form Arrays
-    
-  names:this.fb.array(
-   // [new FormControl()] or
-    [this.fb.control("")]
+  names:this.fb.array(      //form arrays
+  [this.fb.control('')]         //OR WE TAKE [new FormControl()]
   )
  })
 
- checkUpper():any {
+ checkUpperCase(control:FormControl)  {
   const pattern=/[A-Z]/
- console.log(this.myForm);
+  console.log(control.value)
+ if(!(pattern.test(control.value)))  {
+    return {upperCaseError:true};        
+ }
+  return null;
+ }
 
+ asyncValidateTest(control: FormControl) {
+  const response = new Promise((resolve, reject) => {
+    setTimeout(()=> {
+      resolve({key:true})
+
+    },3000)
+    return null;
+  })
+  return response; 
  }
 
  get names () {
@@ -52,8 +74,8 @@ this.myForm.controls.names.controls.splice(i,1)
 } 
   
   show() {
-    
-    console.log(this.myForm)
+    this.fb.array 
+    console.log(this.myForm,this.myForm.get('uname'));
   }
 
 
